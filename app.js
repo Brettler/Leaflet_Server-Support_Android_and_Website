@@ -31,6 +31,13 @@ app.use((req, res, next) => {
     }
 });
 
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./firebase-adminsdk.json");
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+});
 
 
 const customEnv = require('custom-env');
@@ -65,11 +72,6 @@ app.use('/api/Users/:id', userInfo);
 
 const chat = require('./routes/chat');
 app.use('/api/Chats', chat);
-
-
-
-
-
 
 // 'process.env.PORT' varaible will contain the port that the server will run on it. This string is define in the config directory.
 // need to swich instead of the hard coded port to - 'process.env.PORT

@@ -9,7 +9,17 @@ const processUserInfo = async (req, res) => {
         try {
             const decoded = jwt.verify(token, key);
             const username = decoded.username;
-            const user = await UserInfoService.getUserInfo(username);
+
+            // Check if Firebase token exits in the reuqest header.
+            const firebaseToken = req.headers.firebase;
+            if (firebaseToken) {
+                console.log("This is an Android client. ",firebaseToken);
+            } else {
+                console.log("This is a web client.")
+            }
+
+
+            const user = await UserInfoService.getUserInfo(username, firebaseToken);
             if (user) {
                 res.status(200).json(user);
             } else {

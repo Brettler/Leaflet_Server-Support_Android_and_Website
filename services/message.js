@@ -1,5 +1,9 @@
 const Message = require("../models/message");
 const Chat = require("../models/chat");
+const notificationService = require('../services/NotificationService');
+const UserInfo = require('../models/userinfo');
+const registerModel = require('../models/register');
+
 // We set the io varaible in app.js
 let io;
 const setIo = function(ioInstance) {
@@ -9,7 +13,7 @@ const addMessage = async (chatId, messageData) => {
     try {
         const message = new Message(messageData);
         const savedMessage = await message.save();
-
+        console.log("SavedMessage: ", savedMessage);
         const chat = await Chat.findById(chatId);
         chat.messages.push(savedMessage);
         await chat.save();
@@ -21,13 +25,40 @@ const addMessage = async (chatId, messageData) => {
         if (io) {
             io.emit('newMessage', { chatId, message: populatedMessage});
         }
+
+        // Sending notifications using firebase:
+        // Retrieve recipients' user info
+        const recipients = chat.participants.filter(participant => participant.toString() !== messageData.sender.toString());
+
+        // For each recipient, check if they are using an Android device and send appropriate notification
+        for (let recipientId of recipients) {
+            const recipient = await registerModel.findById(recipientId);
+            const recipientInfo = await UserInfo.findOne({ username: recipient.username });
+
+            // Check if the recipient is using Android (has a Firebase token)
+            if (recipientInfo && recipientInfo.firebaseToken) {
+                // Send Firebase notification
+                console.log("Trying to execute notificationService.sendNotification!")
+                await notificationService.sendNotification(
+                    recipientInfo.firebaseToken,
+                    'New message from ' + populatedMessage.sender.displayName,
+                    populatedMessage.content
+
+                );
+                console.log("Sent notification using  Firebase: ", populatedMessage.content)
+            }
+        }
+
+
+
+
+
         return populatedMessage;
     } catch (err) {
         console.error(err);
         throw new Error('Error while adding message');
     }
 };
-
 
 const getMessages = async (chatId) => {
     try {

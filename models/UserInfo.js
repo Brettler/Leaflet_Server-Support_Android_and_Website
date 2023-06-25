@@ -14,6 +14,10 @@ const UserInfo = new Schema({
     profilePic: {
         type: String,
         require: true
+    },
+    firebaseToken: {
+        type: String,
+        require: false
     }
 });
 module.exports = mongoose.model('UserInfo', UserInfo)
