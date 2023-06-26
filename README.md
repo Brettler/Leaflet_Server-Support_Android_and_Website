@@ -17,7 +17,7 @@ To run the Android application using our server, follow these steps:
 3. Execute the command "npm install" to install the required dependencies.
 4. Open your local MongoDB server and modify the URL section from 'localhost' to '127.0.0.1/leaflet', and click 'Connect'.
 5. Proceed to the 'config' folder and edit the 'env.local' file to set the URL for your local MongoDB database. Ensure that the port number matches the one specified in your MongoDB server configuration. If necessary, you can modify the port number used by our server, by default set to '4656'.
-6. Finally, enter the command "npm start" to start the application.
+6. Finally, enter the command "npm start" to start the server.
 
 To run the Android client:
 
