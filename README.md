@@ -1,4 +1,4 @@
-# Advanced Programming 2 - Task 3 - Android with server
+# Leaflet Serever (Support Android & Web App)
 Liad Brettler & Eden Berman
 
 ## Description
