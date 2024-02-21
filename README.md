@@ -1,4 +1,4 @@
-# Leaflet Serever (Support Android & Web App)
+# Leaflet Server (Support Android app & website app)
 Liad Brettler & Eden Berman
 
 ## Description
