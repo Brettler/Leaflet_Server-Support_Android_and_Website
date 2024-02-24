@@ -3,3 +3,9 @@ node_modules/
 
 # Environment variables
 config/.env.cloud
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+. ebextensions/environmentvariables.config
