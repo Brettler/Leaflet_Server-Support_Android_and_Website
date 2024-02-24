@@ -76,3 +76,8 @@ app.use('/api/Chats', chat);
 // 'process.env.PORT' varaible will contain the port that the server will run on it. This string is define in the config directory.
 // need to swich instead of the hard coded port to - 'process.env.PORT
 server.listen(process.env.PORT)
+
+// const port = process.env.PORT || 3000; // Use the Elastic Beanstalk provided port or default to 3000 for local development
+// server.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });
