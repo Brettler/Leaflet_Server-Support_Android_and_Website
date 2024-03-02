@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const key = process.env.JWT_SECRET;
-
-const UserInfoService = require('../services/UserInfo');
+const UserInfoService = require('../services/InfoUser');
 
 const processUserInfo = async (req, res) => {
     if (req.headers.authorization) {
@@ -17,7 +16,6 @@ const processUserInfo = async (req, res) => {
             } else {
                 console.log("This is a web client.")
             }
-
 
             const user = await UserInfoService.getUserInfo(username, firebaseToken);
             if (user) {

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 // This file only define the structure of the data.
-const UserInfo = new Schema({
+const InfoUser = new Schema({
     username: {
         type: String,
         require: true
@@ -20,4 +20,4 @@ const UserInfo = new Schema({
         require: false
     }
 });
-module.exports = mongoose.model('UserInfo', UserInfo)
+module.exports = mongoose.model('InfoUser', InfoUser)

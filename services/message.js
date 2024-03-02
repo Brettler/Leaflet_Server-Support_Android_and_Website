@@ -1,11 +1,11 @@
 const Message = require("../models/message");
 const Chat = require("../models/chat");
 const notificationService = require('../services/NotificationService');
-const UserInfo = require('../models/userinfo');
+const InfoUser = require('../models/InfoUser');
 const registerModel = require('../models/register');
 
 // We set the io varaible in app.js
-let io;
+let io; // This is a placeholder variable for the Socket.io instance
 const setIo = function(ioInstance) {
     io = ioInstance;
 };
@@ -33,7 +33,7 @@ const addMessage = async (chatId, messageData) => {
         // For each recipient, check if they are using an Android device and send appropriate notification
         for (let recipientId of recipients) {
             const recipient = await registerModel.findById(recipientId);
-            const recipientInfo = await UserInfo.findOne({ username: recipient.username });
+            const recipientInfo = await InfoUser.findOne({ username: recipient.username });
 
             // Check if the recipient is using Android (has a Firebase token)
             if (recipientInfo && recipientInfo.firebaseToken) {
@@ -48,11 +48,6 @@ const addMessage = async (chatId, messageData) => {
                 console.log("Sent notification using  Firebase: ", populatedMessage.content)
             }
         }
-
-
-
-
-
         return populatedMessage;
     } catch (err) {
         console.error(err);

@@ -1,9 +1,7 @@
-
-
 const loginService = require('../services/login');
 // We are using cryptography, to ensure that no one else will be able to impersonate users
 const jwt = require('jsonwebtoken');
-const key = "Bearer  ";
+const key = process.env.JWT_SECRET;
 
 const processLogin = async (req, res) => {
     // Check credentials

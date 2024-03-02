@@ -1,5 +1,5 @@
 const registerModel = require('../models/register');
-const UserInfo = require('../models/userinfo');
+const InfoUser = require('../models/InfoUser');
 
 const getUserInfo = async (username, firebaseToken) => {
     try {
@@ -9,9 +9,9 @@ const getUserInfo = async (username, firebaseToken) => {
         }
 
         // Fetch the user info or create a new one if it does not exist
-        let userInfo = await UserInfo.findOne({ username: username });
+        let userInfo = await InfoUser.findOne({ username: username });
         if (!userInfo) {
-            userInfo = new UserInfo({
+            userInfo = new InfoUser({
                 username: user.username,
                 displayName: user.displayName,
                 profilePic: user.profilePic,

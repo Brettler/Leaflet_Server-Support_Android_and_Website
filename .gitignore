@@ -9,3 +9,4 @@ config/.env.cloud
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 . ebextensions/environmentvariables.config
+app.yaml
