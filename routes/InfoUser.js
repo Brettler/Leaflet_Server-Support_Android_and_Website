@@ -1,4 +1,4 @@
-const userInfoController = require('../controllers/UserInfo');
+const userInfoController = require('../controllers/InfoUser');
 
 const express = require('express')
 

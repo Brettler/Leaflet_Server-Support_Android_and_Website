@@ -2,8 +2,8 @@ const jwt = require("jsonwebtoken");
 const messageService = require("../services/message");
 const registerModel = require("../models/register");
 const key = process.env.JWT_SECRET;
-const notificationService = require('../services/NotificationService');
-const {getUserInfo} = require("../services/UserInfo");
+// const notificationService = require('../services/NotificationService');
+// const {getUserInfo} = require("../services/InfoUser");
 
 
 const addMessage = async (req, res) => {

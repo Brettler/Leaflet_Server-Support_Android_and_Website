@@ -1,5 +1,6 @@
 const registerService = require('../services/register');
 const { validationResult } = require('express-validator');
+
 // This method will handle the request from the client and will be responsible to answer to him.
 const createUser = async (req, res) => {
     const errors = validationResult(req);
