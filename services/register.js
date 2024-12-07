@@ -1,8 +1,6 @@
 // Here we define the logic we can do on the data we define in the model
-
 const Register = require('../models/register');
 
-// Define the methods we can use on the data:
 const createUser = async (userData) => {
     try {
         const existingUser = await Register.findOne({ username: userData.username });
@@ -26,4 +24,4 @@ const createUser = async (userData) => {
 };
 
 
-module.exports = {createUser}
+module.exports = { createUser }

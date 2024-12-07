@@ -1,5 +1,4 @@
 const userInfoController = require('../controllers/InfoUser');
-
 const express = require('express')
 
 var router = express.Router();

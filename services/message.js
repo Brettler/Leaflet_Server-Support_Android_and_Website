@@ -5,10 +5,11 @@ const InfoUser = require('../models/InfoUser');
 const registerModel = require('../models/register');
 
 // We set the io varaible in app.js
-let io; // This is a placeholder variable for the Socket.io instance
+let io; // Placeholder variable for the Socket.io instance
 const setIo = function(ioInstance) {
     io = ioInstance;
 };
+
 const addMessage = async (chatId, messageData) => {
     try {
         const message = new Message(messageData);
@@ -70,4 +71,4 @@ const getMessages = async (chatId) => {
 };
 
 
-module.exports = {addMessage, getMessages, setIo}
+module.exports = { addMessage, getMessages, setIo }

@@ -2,9 +2,9 @@ const jwt = require('jsonwebtoken');
 const key = process.env.JWT_SECRET;
 
 const chatService = require('../services/chat');
-const messageModel = require('../models/message'); // Modify the path according to your project structure
+const messageModel = require('../models/message');
 const registerModel = require('../models/register');
-const chatModel = require('../models/chat'); // Modify the path according to your project structure
+const chatModel = require('../models/chat');
 
 const getChats = async (req, res) => {
     if (req.headers.authorization) {
