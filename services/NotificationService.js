@@ -16,6 +16,4 @@ const sendNotification = async (firebaseToken, title, body) => {
     }
 };
 
-module.exports = {
-    sendNotification
-};
+module.exports = { sendNotification }

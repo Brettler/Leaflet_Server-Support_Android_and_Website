@@ -20,4 +20,4 @@ const processLogin = async (req, res) => {
         res.status(404).send('Invalid username and/or password')
 }
 
-module.exports = {processLogin}
+module.exports = { processLogin }

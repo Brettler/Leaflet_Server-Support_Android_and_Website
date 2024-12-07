@@ -14,6 +14,7 @@ const getChats = async (userId) => {
 };
 
 const registerModel = require('../models/register')
+
 const createChat = async (username, userId) => {
     try {
         // Find the friend in the database.
@@ -29,7 +30,7 @@ const createChat = async (username, userId) => {
         }
 
         // Create a new chat with the authenticated user and the friend.
-        const chat = new Chat({participants: [userId, friend._id]});
+        const chat = new Chat({ participants: [userId, friend._id] });
 
         // Save the chat to the database and return it.
         const newChat = await chat.save();
@@ -40,6 +41,7 @@ const createChat = async (username, userId) => {
             { $push: { chats: newChat._id } },
             { new: true, useFindAndModify: false }
         );
+
         await registerModel.findByIdAndUpdate(
             friend._id,
             { $push: { chats: newChat._id } },

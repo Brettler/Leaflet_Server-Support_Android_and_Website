@@ -24,11 +24,11 @@ const getUserInfo = async (username, firebaseToken) => {
             await userInfo.save();
         }
 
-        return {username: user.username, displayName: user.displayName, profilePic: user.profilePic}
+        return { username: user.username, displayName: user.displayName, profilePic: user.profilePic }
     } catch (err) {
         console.error(err);
         throw err;
     }
 };
 
-module.exports = {getUserInfo}
+module.exports = { getUserInfo }

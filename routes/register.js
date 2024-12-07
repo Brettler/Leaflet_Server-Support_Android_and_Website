@@ -1,8 +1,6 @@
 // This file is going to connect between the routes from the client and the action of the controller.
 const { body } = require('express-validator');
-
 const registerController = require('../controllers/register');
-
 const express = require('express')
 
 var router = express.Router();

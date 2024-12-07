@@ -1,4 +1,3 @@
-
 const Register = require('../models/register');
 
 const getCredentials = async (username, password) => {
@@ -10,5 +9,4 @@ const getCredentials = async (username, password) => {
     }
 };
 
-// Don't forget to export this new function
-module.exports = {getCredentials}
+module.exports = { getCredentials }

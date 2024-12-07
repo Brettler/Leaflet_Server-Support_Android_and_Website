@@ -57,11 +57,14 @@ const addMessage = async (req, res) => {
 
 const getMessages = async (req, res) => {
     console.log('Incoming request data for getMessages:', req.params);
+
     if (req.headers.authorization) {
         const token = req.headers.authorization.split(" ")[1];
+
         try {
             jwt.verify(token, key);
             const messages = await messageService.getMessages(req.params.id);
+
             if (messages) {
                 // Format the messages
                 const formattedMessages = messages.map(message => ({
@@ -72,10 +75,12 @@ const getMessages = async (req, res) => {
                     },
                     content: message.content
                 }));
+
                 // Print each message
                 formattedMessages.forEach(message => {
                     console.log("Sending back response after execute getMessages: ", message.content);
                 });
+
                 res.status(200).json(formattedMessages);
             } else {
                 res.status(404).send('Messages not found!');
@@ -88,4 +93,4 @@ const getMessages = async (req, res) => {
     }
 };
 
-module.exports = {addMessage, getMessages}
+module.exports = { addMessage, getMessages }
